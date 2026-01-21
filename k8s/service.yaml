@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-service
+  namespace: payment-service
+  labels:
+    app: payment-service
+    app.kubernetes.io/name: payment-service
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: ecommerce-platform
+    openchoreo.io/managed: "true"
+    openchoreo.io/environment: production
+    backstage.io/kubernetes-id: payment-service
+  annotations:
+    openchoreo.io/api-type: "rest"
+    openchoreo.io/port: "80"
+spec:
+  type: ClusterIP
+  selector:
+    app: payment-service
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  sessionAffinity: None

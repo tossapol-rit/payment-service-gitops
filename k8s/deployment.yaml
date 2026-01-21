@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-service
+  namespace: payment-service
+  labels:
+    app: payment-service
+    app.kubernetes.io/name: payment-service
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: ecommerce-platform
+    app.kubernetes.io/managed-by: argocd
+    openchoreo.io/managed: "true"
+    openchoreo.io/environment: production
+    backstage.io/kubernetes-id: payment-service
+  annotations:
+    backstage.io/managed-by-location: url:https://github.com/YOUR_GITHUB_USERNAME/payment-service-gitops
+    openchoreo.io/description: "Payment Service API for ecommerce platform"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: payment-service
+  template:
+    metadata:
+      labels:
+        app: payment-service
+        app.kubernetes.io/name: payment-service
+        app.kubernetes.io/component: backend
+        app.kubernetes.io/part-of: ecommerce-platform
+        openchoreo.io/managed: "true"
+        openchoreo.io/environment: production
+        backstage.io/kubernetes-id: payment-service
+        version: v1.0.0
+    spec:
+      containers:
+      - name: payment-service
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+          name: http
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        env:
+        - name: SERVICE_NAME
+          value: "payment-service"
+        - name: ENVIRONMENT
+          value: "production"

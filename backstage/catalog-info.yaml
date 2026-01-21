@@ -1,0 +1,38 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payment-service
+  description: Payment processing service for ecommerce platform
+  labels:
+    openchoreo.io/managed: "true"
+    openchoreo.io/environment: production
+  annotations:
+    github.com/project-slug: YOUR_GITHUB_USERNAME/payment-service-gitops
+    backstage.io/kubernetes-id: payment-service
+    backstage.io/kubernetes-namespace: payment-service
+    backstage.io/kubernetes-label-selector: 'app=payment-service'
+    argocd/app-name: payment-service
+    openchoreo.io/api-url: http://payment-service.payment-service.svc.cluster.local
+  tags:
+    - payment
+    - api
+    - microservice
+    - gitops
+  links:
+    - url: http://openchoreo.localhost:8080
+      title: OpenChoreo Dashboard
+      icon: dashboard
+    - url: https://github.com/YOUR_GITHUB_USERNAME/payment-service-gitops
+      title: GitOps Repository
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: payment-team
+  system: ecommerce-platform
+  providesApis:
+    - payment-api
+  consumesApis:
+    - user-api
+  dependsOn:
+    - resource:redis-cache
