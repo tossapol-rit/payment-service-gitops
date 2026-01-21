@@ -16,7 +16,7 @@ metadata:
     backstage.io/managed-by-location: url:https://github.com/tossapol-rit/payment-service-gitops
     openchoreo.io/description: "Payment Service API for ecommerce platform"
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: payment-service
