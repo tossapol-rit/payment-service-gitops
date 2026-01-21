@@ -16,7 +16,7 @@ spec:
   
   source:
     # ใช้ local path ก่อน แล้วค่อยเปลี่ยนเป็น GitHub repo ทีหลัง
-    repoURL: https://github.com/YOUR_GITHUB_USERNAME/payment-service-gitops.git
+    repoURL: https://github.com/tossapol-rit/payment-service-gitops.git
     targetRevision: main
     path: k8s
   

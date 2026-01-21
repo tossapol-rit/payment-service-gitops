@@ -13,7 +13,7 @@ metadata:
     openchoreo.io/environment: production
     backstage.io/kubernetes-id: payment-service
   annotations:
-    backstage.io/managed-by-location: url:https://github.com/YOUR_GITHUB_USERNAME/payment-service-gitops
+    backstage.io/managed-by-location: url:https://github.com/tossapol-rit/payment-service-gitops
     openchoreo.io/description: "Payment Service API for ecommerce platform"
 spec:
   replicas: 2

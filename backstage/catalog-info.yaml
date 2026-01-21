@@ -7,7 +7,7 @@ metadata:
     openchoreo.io/managed: "true"
     openchoreo.io/environment: production
   annotations:
-    github.com/project-slug: YOUR_GITHUB_USERNAME/payment-service-gitops
+    github.com/project-slug: tossapol-rit/payment-service-gitops
     backstage.io/kubernetes-id: payment-service
     backstage.io/kubernetes-namespace: payment-service
     backstage.io/kubernetes-label-selector: 'app=payment-service'
@@ -22,7 +22,7 @@ metadata:
     - url: http://openchoreo.localhost:8080
       title: OpenChoreo Dashboard
       icon: dashboard
-    - url: https://github.com/YOUR_GITHUB_USERNAME/payment-service-gitops
+    - url: https://github.com/tossapol-rit/payment-service-gitops
       title: GitOps Repository
       icon: github
 spec:
